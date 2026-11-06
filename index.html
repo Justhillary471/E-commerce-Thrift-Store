@@ -105,6 +105,48 @@
 
     <footer class="site-footer" id="support"><div class="footer-main"><div class="footer-brand"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><span class="brand-mountain"></span><span class="brand-spark"></span></span><span class="brand-name">E-COMMERCE<br /><strong>THRIFT STORE</strong></span></a><p>Curated second-hand style for Kenya, delivered with care.</p></div><div><h3>About Us</h3><a href="#top">Our Story</a><a href="#categories">Shop Categories</a><a href="#featured">Featured Finds</a></div><div><h3>Customer Care</h3><a href="#support">Contact Us</a><a href="#support">Delivery Information</a><a href="#support">Return Policy</a></div><div><h3>Stay Connected</h3><a href="mailto:hello@thriftstore.co.ke">hello@thriftstore.co.ke</a><a href="tel:+254700000000">+254 700 000 000</a><div class="socials"><a href="#support" aria-label="Instagram">ig</a><a href="#support" aria-label="Facebook">f</a><a href="#support" aria-label="TikTok">tk</a></div></div></div><div class="footer-bottom"><span>© 2026 E-commerce Thrift Store. All rights reserved.</span><span>Made for better finds.</span></div></footer>
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <!-- PRODUCT DETAILS MODAL -->
+<div class="product-modal" id="productModal">
+    <div class="product-modal-content">
+
+        <button class="modal-close" id="closeProductModal">&times;</button>
+
+        <div class="modal-product-image">
+            <img id="modalProductImage" src="" alt="Product image">
+        </div>
+
+        <div class="modal-product-info">
+            <span id="modalProductCategory"></span>
+
+            <h2 id="modalProductName"></h2>
+
+            <div class="modal-price" id="modalProductPrice"></div>
+
+            <p id="modalProductDescription">
+                Quality checked fashion at affordable prices.
+            </p>
+
+            <div id="productSizeSection">
+    <label for="productSize">Select Size</label>
+    <select id="productSize">
+        <option value="">Choose a size</option>
+        <option value="S">Small (S)</option>
+        <option value="M">Medium (M)</option>
+        <option value="L">Large (L)</option>
+        <option value="XL">Extra Large (XL)</option>
+    </select>
+</div>
+
+            <label for="productQuantity">Quantity</label>
+            <input type="number" id="productQuantity" min="1" value="1">
+
+            <button class="button button-gold" id="modalAddToCart">
+                Add to Cart
+            </button>
+        </div>
+
+    </div>
+</div>
     <script type="module" src="/script.js"></script>
   </body>
 </html>

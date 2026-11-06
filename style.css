@@ -104,4 +104,220 @@
 .hero-tag {
     position: absolute;
     z-index: 4;
+}/* =================================
+   TOP DEALS - 5 PRODUCTS PER ROW
+================================= */
+
+#topDealsGrid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 20px;
+}
+
+/* Tablets */
+@media (max-width: 1000px) {
+    #topDealsGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 600px) {
+    #topDealsGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+}.add-cart {
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    font-weight: 700;
+    transition: 0.3s ease;
+}
+
+.add-cart:hover {
+    background: var(--gold-soft);
+    color: var(--navy);
+    transform: translateY(-2px);
+}
+/* =================================
+   PRODUCT DETAILS POPUP
+================================= */
+
+.product-modal {
+    position: fixed;
+    z-index: 100;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(4, 20, 50, 0.75);
+    backdrop-filter: blur(5px);
+}
+
+.product-modal.is-open {
+    display: flex;
+}
+
+.product-modal-content {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    width: min(850px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 30px;
+    border-radius: 22px;
+    background: white;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+}
+
+.modal-close {
+    position: absolute;
+    z-index: 2;
+    top: 12px;
+    right: 15px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #edf2f8;
+    color: var(--navy);
+    font-size: 25px;
+}
+
+.modal-close:hover {
+    background: var(--gold);
+}
+
+.modal-product-image {
+    overflow: hidden;
+    border-radius: 16px;
+    background: #f1f4f8;
+}
+
+.modal-product-image img {
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+    object-fit: cover;
+}
+
+.modal-product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px 5px;
+}
+
+#modalProductCategory {
+    color: #7b8797;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+#modalProductName {
+    margin: 10px 0;
+    color: var(--navy);
+    font-size: 27px;
+    line-height: 1.2;
+}
+
+.modal-price {
+    margin: 8px 0 15px;
+    color: var(--navy);
+    font-size: 23px;
+    font-weight: 800;
+}
+
+#modalProductDescription {
+    margin-bottom: 22px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.modal-product-info label {
+    margin: 12px 0 7px;
+    color: var(--navy);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.modal-product-info select,
+.modal-product-info input {
+    width: 100%;
+    height: 43px;
+    padding: 0 12px;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    outline: none;
+    background: white;
+    color: var(--ink);
+}
+
+.modal-product-info select:focus,
+.modal-product-info input:focus {
+    border-color: var(--gold);
+}
+
+#modalAddToCart {
+    width: 100%;
+    margin-top: 22px;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 650px) {
+    .product-modal-content {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 18px;
+    }
+
+    .modal-product-image img {
+        min-height: 220px;
+        max-height: 280px;
+    }
+
+    #modalProductName {
+        font-size: 22px;
+    }
+
+    .modal-product-info {
+        padding: 5px;
+    }
+}/* CART QUANTITY CONTROLS */
+
+.cart-quantity {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 10px 0;
+}
+
+.cart-quantity button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #dce3ed;
+    border-radius: 8px;
+    background: #f4f7fc;
+    color: #082d67;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.cart-quantity button:hover {
+    background: #ffc928;
+    border-color: #ffc928;
+}
+
+.cart-quantity span {
+    min-width: 20px;
+    text-align: center;
+    font-weight: 700;
+    color: #082d67;
 }
