@@ -148,5 +148,110 @@
     </div>
 </div>
     <script type="module" src="/script.js"></script>
+    <!-- CHECKOUT MODAL -->
+<div class="checkout-modal" id="checkoutModal">
+
+    <div class="checkout-container">
+
+        <button class="checkout-close" id="closeCheckout">
+            &times;
+        </button>
+
+        <div class="checkout-header">
+            <span>SECURE CHECKOUT</span>
+            <h2>Complete Your Order</h2>
+            <p>Just a few details before we deliver your order.</p>
+        </div>
+
+        <form id="checkoutForm">
+
+            <!-- CUSTOMER DETAILS -->
+            <section class="checkout-section">
+
+                <h3>Customer Information</h3>
+
+                <label for="customerName">Full Name</label>
+                <input
+                    type="text"
+                    id="customerName"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+                <label for="customerPhone">Phone Number</label>
+                <input
+                    type="tel"
+                    id="customerPhone"
+                    placeholder="e.g. 0712345678"
+                    pattern="^(?:\+254|0)[17]\d{8}$"
+                    required
+                >
+
+            </section>
+
+            <!-- DELIVERY DETAILS -->
+            <section class="checkout-section">
+
+                <h3>Delivery Information</h3>
+
+                <label for="deliveryCounty">County</label>
+                <input
+                    type="text"
+                    id="deliveryCounty"
+                    placeholder="e.g. Nairobi"
+                    required
+                >
+
+                <label for="deliveryTown">Town / Area</label>
+                <input
+                    type="text"
+                    id="deliveryTown"
+                    placeholder="e.g. Ruiru, Westlands"
+                    required
+                >
+
+                <label for="deliveryAddress">Delivery Address</label>
+                <textarea
+                    id="deliveryAddress"
+                    placeholder="Enter your estate, building, street or delivery location"
+                    rows="3"
+                    required
+                ></textarea>
+
+                <label for="deliveryNotes">
+                    Additional Instructions (Optional)
+                </label>
+
+                <textarea
+                    id="deliveryNotes"
+                    placeholder="Any special delivery instructions?"
+                    rows="2"
+                ></textarea>
+
+            </section>
+
+            <!-- ORDER SUMMARY -->
+            <section class="checkout-section">
+
+                <h3>Order Summary</h3>
+
+                <div id="checkoutItems"></div>
+
+                <div class="checkout-total">
+                    <span>Total Amount</span>
+                    <strong id="checkoutTotal">KSh 0</strong>
+                </div>
+
+            </section>
+
+            <button type="submit" class="button button-gold" id="placeOrderButton">
+                Continue to Payment →
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
   </body>
 </html>

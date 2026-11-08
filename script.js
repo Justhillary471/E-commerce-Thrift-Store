@@ -283,7 +283,29 @@ type="button"
         JSON.stringify(state.cart)
     );
 }
+// DISPLAY ITEMS IN CHECKOUT
+function renderCheckout() {
+    const checkoutItems = document.getElementById("checkoutItems");
 
+    checkoutItems.innerHTML = state.cart.map((item) => `
+        <div class="checkout-item">
+            <div>
+                <strong>${item.name}</strong>
+                ${item.size ? `<small>Size: ${item.size}</small>` : ""}
+                <small>Quantity: ${item.quantity}</small>
+            </div>
+            <strong>${formatMoney(item.price * item.quantity)}</strong>
+        </div>
+    `).join("");
+
+    const total = state.cart.reduce(
+        (sum, item) => sum + (item.price * item.quantity),
+        0
+    );
+
+    document.getElementById("checkoutTotal").textContent =
+        formatMoney(total);
+}
 function showToast(message) {
   const toast = $("#toast");
   toast.textContent = message;
@@ -334,7 +356,32 @@ $("#cartButton").addEventListener("click", () => { $("#cartDrawer").classList.ad
 function closeCart() { $("#cartDrawer").classList.remove("is-open"); $("#drawerBackdrop").classList.remove("is-open"); $("#cartDrawer").setAttribute("aria-hidden", "true"); }
 $("#closeCart").addEventListener("click", closeCart);
 $("#drawerBackdrop").addEventListener("click", closeCart);
-$("#checkoutButton").addEventListener("click", () => showToast("Checkout will be available in the next phase."));
+// OPEN CHECKOUT
+$("#checkoutButton").addEventListener("click", () => {
+    if (state.cart.length === 0) {
+        showToast("Your cart is empty. Add products first.");
+        return;
+    }
+
+    renderCheckout();
+    $("#checkoutModal").classList.add("is-open");
+});
+
+// CLOSE CHECKOUT
+$("#closeCheckout").addEventListener("click", () => {
+    $("#checkoutModal").classList.remove("is-open");
+});
+// CHECKOUT FORM SUBMISSION
+$("#checkoutForm").addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (state.cart.length === 0) {
+        showToast("Your cart is empty.");
+        return;
+    }
+
+    showToast("Details validated! Proceeding to payment setup.");
+});
 document.addEventListener("click", (event) => { const addButton = event.target.closest("[data-add]"); if (addButton) addToCart(addButton.dataset.add); const removeButton = event.target.closest("[data-remove]"); if (removeButton) {
     const removeId = Number(removeButton.dataset.remove);
     const removeSize = removeButton.dataset.removeSize || "";
